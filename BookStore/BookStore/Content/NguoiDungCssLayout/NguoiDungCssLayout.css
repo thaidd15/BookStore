@@ -1,0 +1,83 @@
+﻿div#ToanTrang {
+    position: relative;
+    font-family: Arial;
+    font-weight: bold;
+    background-color: white;
+}
+
+.DangKyDangNhap {
+    float: right;
+    margin-top: -1%;
+    margin-right: 8%;
+}
+
+    .DangKyDangNhap a:hover {
+        text-decoration: none;
+        color: grey;
+    }
+
+
+#divDanhMuc {
+    height: 30px;
+}
+
+.navMenu {
+    float: left;
+    margin-left: 8%;
+}
+
+    .navMenu li {
+        display: inline;
+        -webkit-transition: all .5s ease-out;
+        -moz-transition: all .5s ease-out;
+        -ms-transition: all .5s ease-out;
+        -o-transition: all .5s ease-out;
+    }
+
+        .navMenu li:hover {
+            -webkit-transition: all .5s ease-out;
+            -moz-transition: all .5s ease-out;
+            -ms-transition: all .5s ease-out;
+            -o-transition: all .5s ease-out;
+        }
+
+    .navMenu a:hover {
+        text-decoration: none;
+        color: grey;
+    }
+
+#txtTimKiem {
+    float: right;
+    margin-right: 15%;
+}
+
+    #txtTimKiem input {
+        height: 0;
+    }
+
+#divHinhAnhTimKiem button {
+    margin-right: -460px;
+    padding: 10px 10px 5px 10px;
+    background-color: #373737;
+}
+
+#divHinhAnhTimKiem button:hover {
+    color:grey;
+}
+
+
+#slider {
+    margin-left: 10%;
+    width: 1100px;
+    height: 400px;
+}
+
+    #slider img {
+        width: 1100px;
+        height: 400px;
+    }
+
+div#footer {
+    padding: 30px;
+    text-align: left;
+}

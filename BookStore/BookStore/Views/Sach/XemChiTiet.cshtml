@@ -1,0 +1,70 @@
+﻿@using BookStore.Models;
+
+@model Sach
+@{
+    ViewBag.Title = "Chi tiết sách";
+    Layout = "~/Views/Layout/_UserLayout.cshtml";
+}
+<br />
+<br />
+<h2 style="color:black; margin-left:8%; font-weight:normal">Thông tin sách</h2>
+<br />
+<div id="HinhAnh">
+    <img src="@Url.Content("~/HinhAnhSP/" + Model.AnhBia)" width="170" height="200" />
+</div>
+<div id="ThongTin">
+    <div id="TenSach">@Model.TenSach</div>
+    <div id="TacGia">Tác Giả: @ViewBag.TacGia</div>
+    <div id="ChuDe">Chủ Đề: @ViewBag.TenChuDe</div>
+    <div id="NhaXuatBan">Nhà Xuất Bản: @ViewBag.NhaXuatBan</div>
+    <div id="MT">Mô Tả:</div>
+    <p id="Mota">@Model.MoTa</p>
+    <div id="Gia"><span style="color: green; font-size:15pt">Giá: </span><span id="Gia">@string.Format("{0:0,0}", @Model.GiaBan) VNĐ</span></div>
+    <br />
+    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = Model.MaSach, @strURL = Request.Url.ToString() }))
+    {
+        <input type="submit" class="button button-small" value="Mua Sách" />
+    }
+</div>
+<div style="clear:both"></div>
+
+<style>
+    #HinhAnh {
+        float: left;
+        margin-left: 10%;
+    }
+
+    #ThongTin {
+        float: left;
+        width: 600px;
+    }
+
+    #TenSach {
+        font-weight: normal;
+        font-size: 20pt;
+        height: auto;
+        word-wrap: break-word;
+        color: red;
+    }
+
+    #ChuDe, #NhaXuatBan, #MT, #TacGia {
+        font-size: 15pt;
+        font-weight: normal;
+        color: black;
+        height: auto;
+    }
+
+    #Mota {
+        font-weight: normal;
+        color: black;
+        word-wrap: break-word;
+        height: auto;
+    }
+
+    #Gia span#Gia {
+        font-weight: normal;
+        color: orange;
+        font-size: 15pt;
+        height: auto;
+    }
+</style>

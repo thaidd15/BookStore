@@ -1,0 +1,8 @@
+﻿@if (ViewBag.TongSoLuong == 0)
+{
+    <a href="@Url.Action("GioHang","GioHang")"><i class="fa fa-shopping-cart"></i>(0,0)</a>
+}
+else
+{
+    <a href="@Url.Action("GioHang","GioHang")"><i class="fa fa-shopping-cart"></i>(@ViewBag.TongSoLuong,@ViewBag.TongTien)</a>
+}

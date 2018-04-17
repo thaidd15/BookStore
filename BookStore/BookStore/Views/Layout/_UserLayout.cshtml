@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/NguoiDungCssLayout/fonts.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCssLayout/screen.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCssLayout/NguoiDungCssLayout.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/NivoSlider/nivo-slider.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.js"></script>
+    <script src="~/NivoSlider/jquery.nivo.slider.pack.js"></script>
+</head>
+
+<body>
+    <div id="ToanTrang">
+        <div style="background-color: #373737" class="flash success" id="divDanhMuc">
+            <div class="DangKyDangNhap">
+                @Html.Action("GioHangPartial", "GioHang")
+                &nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("Đăng ký", "DangKy", "NguoiDung", null, htmlAttributes: new { @class = "DangKy" })
+                @Html.ActionLink("Đăng nhập", "DangNhap", "NguoiDung", null, htmlAttributes: new { @class = "DangNhap" })
+            </div>
+
+            <div id="txtTimKiem">
+                @using (Html.BeginForm("SearchResult", "Search", FormMethod.Post))
+                {
+                    @Html.TextBox("txtTimKiem",null, new { @class = "TextBoxTimKiem", @placeholder = "Search..." })
+                    <div id="divHinhAnhTimKiem">
+                        <button type="submit">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                }
+            </div>
+
+            <ul class="navMenu">
+                <li>
+                    <a href="@Url.Action("Index","Home")">Trang chủ</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("DanhMucChuDe","ChuDe")">Chủ đề</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("DanhMucNXB","NhaXuatBan")">Nhà xuất bản</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="slider" class="nivoSlider">
+            <img src="~/HinhAnh/Anh1.jpg" />
+            <img src="~/HinhAnh/Anh2.jpg" />
+            <img src="~/HinhAnh/Anh3.jpg" />
+            <img src="~/HinhAnh/Anh4.jpg" />
+            <img src="~/HinhAnh/Anh5.jpg" />
+            <img src="~/HinhAnh/Anh6.jpg" />
+        </div>
+
+        <section>
+            <div id="NoiDung">
+                @RenderBody()
+            </div>
+        </section>
+
+
+        <div class="flash success" style="background-color: #373737" id="footer">
+            <h1>BookStore</h1>
+            <p>
+                <i class="fa fa-mobile" aria-hidden="true"></i>
+                &nbsp;
+                0123 456 789
+            </p>
+            <p>
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                &nbsp;
+                Phường Bách Khoa - Quận Hai Bà Trưng - Hà Nội
+            </p>
+            <p>
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                &nbsp;
+                bookstore@gmail.com
+            </p>
+            <p>
+                <i class="fa fa-copyright" aria-hidden="true"></i>
+                &nbsp;
+                Bản quyền thuộc về BookStore
+            </p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+                controlNav: false,
+                nextText: '',
+                prevText: ''
+            });
+        });
+    </script>
+
+</body>
+</html>

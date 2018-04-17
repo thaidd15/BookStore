@@ -1,0 +1,60 @@
+﻿@using BookStore.Models
+@using PagedList.Mvc
+@model PagedList.IPagedList<Sach>
+
+<link href="~/Content/TrangChuCss.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Tìm kiếm";
+    Layout = "~/Views/Layout/_UserLayout.cshtml";
+}
+
+<br />
+<br />
+<h2 style="margin-left:8%; font-weight:normal; color:black">Kết quả tìm kiếm</h2>
+<p style="margin-left:8%">@ViewBag.Notification</p>
+<div id="divBody" style="background-color:white">
+    @{int i = 0;}
+    @foreach (var item in Model)
+    {
+        i++;
+        <div id="SanPham">
+            <a href="@Url.Action("XemChiTiet", "Sach", new { @MaSach=item.MaSach })">
+                <div id="AnhBia">
+                    <img src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" />
+                </div>
+            </a>
+            <div id="ThongTin">
+                @if (item.TenSach.Length < 30)
+                {
+                    <div id="TenSach" title="@item.TenSach">@item.TenSach.</div>
+                }
+                else
+                {
+                    <div id="TenSach" title="@item.TenSach">@item.TenSach.Substring(0, 30)...</div>
+                }
+                <div id="DonGia" style="color:orange">
+                    <font color="Green">Giá: </font>
+                    @String.Format("{0:0,0}", item.GiaBan) VNĐ
+                </div>
+            </div>
+        </div>
+        if (i % 4 == 0)
+        {
+            <div style="clear:both"></div>
+        }
+    }
+</div>
+
+<div style="clear:both"></div>
+<br />
+<br />
+<div style="margin-left:8%">Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</div>
+
+<div class="MenuTrang" style="margin-left:8%">
+    @Html.PagedListPager(Model, page => Url.Action("SearchResult", new { page = page, stringSearch = ViewBag.KeyWord }))
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>

@@ -1,0 +1,28 @@
+﻿@model BookStore.Models.ThongTinDatHang
+
+@{
+    Layout = "~/Views/Layout/_UserLayout.cshtml";
+    ViewBag.Title = "Đặt hàng";
+}
+<br />
+<br />
+<h2 style="margin-left:8%; color:black">Thông tin khách hàng</h2>
+<p style ="margin-left:8%; color:black">Quý khách vui lòng nhập những thông tin sau</p>
+@using(Html.BeginForm())
+{
+    <div style="margin-left:8%">
+        @Html.TextBoxFor(x => x.Name, new { @placeholder = "Họ tên" })
+    </div>
+    <br />
+    <div style="margin-left:8%">
+        @Html.TextBoxFor(x => x.Phone, new { @placeholder = "Số điện thoại" })
+    </div>
+    <br />
+    <div style="margin-left:8%">
+        @Html.TextBoxFor(x => x.Address, new { @placeholder = "Địa chỉ" })
+    </div>
+    <br />
+    <div style="margin-left:8%">
+        <input type="submit" class="button button-submit" value="Hoàn thành"/>
+    </div>
+}

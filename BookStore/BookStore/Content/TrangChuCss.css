@@ -1,0 +1,37 @@
+﻿div#SanPham {
+    float: left;
+    width: 200px;
+    margin-left: 8%;
+    margin-top: 10px;
+}
+
+    div#SanPham img {
+        width: 170px;
+        height: 200px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+#ThongTin {
+    padding: 0 15px 15px 15px;
+    font-family: Arial;
+    font-size: small;
+}
+
+#TenSach {
+    padding: 5px;
+    height: 50px;
+}
+
+#DonGia {
+    padding: 5px;
+    font-size: small;
+}
+
+#GioHang {
+    margin-left:28px;
+}
+
+#divBody {
+    margin: auto;
+}

@@ -1,0 +1,42 @@
+﻿@model BookStore.Models.Sach
+
+@{
+    ViewBag.Title = "Chỉnh sửa";
+    Layout = "~/Views/Layout/_AdminLayout.cshtml";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3 style="color:blue">Sửa: @Model.TenSach</h3>
+    </div>
+    @using (Html.BeginForm())
+    {
+        <div class="panel-body">
+            @Html.HiddenFor(n => n.MaSach)
+            <div class="form-group">
+                <label>Tên sách</label>
+                <textarea class="form-control">@Model.TenSach</textarea>
+                <label>Giá</label>
+                <textarea class="form-control">@Model.GiaBan</textarea>
+                <label>Mô tả</label>
+                <textarea class="form-control" rows="5">@Model.MoTa</textarea>
+                <label>Ảnh bìa</label>
+                <textarea class="form-control">@Model.AnhBia</textarea>
+                <label>Số lượng</label>
+                <textarea class="form-control">@Model.SoLuongTon</textarea>
+                <label>Mã nhà xuất bản</label>
+                <textarea class="form-control">@Model.MaNXB</textarea>
+                <label>Mã chủ đề</label>
+                <textarea class="form-control">@Model.MaChuDe</textarea>
+                <label>Ngày cập nhật</label>
+                <textarea class="form-control">@Model.NgayCapNhat</textarea>
+                <label>Sách mới</label>
+                <textarea class="form-control">@Model.Moi</textarea>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <input type="submit" value="Lưu" class="btn btn-success"/>
+            @Html.ActionLink("Hủy", "Index", null, new { @class="btn btn-warning"})
+        </div>
+    }
+</div>

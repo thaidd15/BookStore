@@ -1,0 +1,92 @@
+﻿@using BookStore.Models
+@model List<GioHang>
+
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Layout/_UserLayout.cshtml";
+}
+
+<br />
+<br />
+<h2 style="margin-left:8%; color:black; font-weight:normal">Giỏ hàng của bạn</h2>
+<table id="divGioHang">
+    <tr>
+        <td style="text-align: center; color:black">Mã sách</td>
+        <td style="text-align: center; color: black">Tên sách</td>
+        <td style="text-align: center; color: black">Ảnh bìa</td>
+        <td style="text-align: center; color: black">Đơn giá</td>
+        <td style="text-align: center; color: black">Số lượng</td>
+        <td style="text-align: center; color: black">Thành tiền</td>
+        <td style="text-align: center; color: black">Cập nhật</td>
+    </tr>
+    @{
+        int dem = @ViewBag.TongSoLuong;
+    }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-align:center; color:black">@item.iMaSach</td>
+            <td style="color:black">@item.sTenSach</td>
+            <td>
+                <a href="@Url.Action("XemChiTiet", "Sach", new { @MaSach = item.iMaSach})">
+                    <img src="@Url.Content("~/HinhAnhSP/"+item.sAnhBia)" width="50" height="50" />
+                </a>
+            </td>
+            <td style="text-align:center; color:black">
+                @String.Format("{0:0,0}", item.dDonGia) VNĐ
+            </td>
+            <td style="text-align:center; color:black">@item.iSoLuong</td>
+            <td style="text-align:center; color:black">@String.Format("{0:0,0}", item.ThanhTien) VNĐ</td>
+            <td style="text-align:center; color:black">
+                @using (Html.BeginForm("XoaGioHang", "GioHang", new { @iMaSP = item.iMaSach }))
+                {
+                    <input type="submit" class="button button-delete" value="Xóa" />
+                }
+            </td>
+        </tr>
+    }
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="color:red; text-align:center; font-size:large">
+            Tổng
+        </td>
+        <td style="color: red; text-align: center; font-size: large">
+            @ViewBag.TongSoLuong
+        </td>
+        <td style="color: red; text-align: center; font-size: large">
+            @String.Format("{0:0,0}", @ViewBag.TongTien) VNĐ
+        </td>
+    </tr>
+</table>
+
+<br />
+@if (dem != 0)
+{
+    <div style="margin-left:8%">
+        @using (Html.BeginForm("DatHang", "GioHang"))
+        {
+            <input type="submit" class="button button-submit" value="Đặt hàng" />
+        }
+    </div>
+}
+
+<style>
+    .button.button-delete {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    #divGioHang {
+        border: 1px solid #EEEEEE;
+        margin-left: 8%;
+    }
+
+        #divGioHang td {
+            padding: 10px;
+            border: 1px solid #EEEEEE;
+        }
+</style>

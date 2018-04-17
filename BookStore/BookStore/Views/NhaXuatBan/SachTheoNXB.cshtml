@@ -1,0 +1,50 @@
+﻿@using BookStore.Models
+@model List<Sach>
+
+<link href="~/Content/TrangChuCss.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Nhà xuất bản";
+    Layout = "~/Views/Layout/_UserLayout.cshtml";
+}
+
+<br />
+<br />
+<div style="clear:both"></div>
+<div id="divBody" style="width:100%">
+    <div style="float:left; width:30%; margin-left:8%">
+        @foreach (var item in (List<NhaXuatBan>)ViewBag.lstNXB)
+        {
+            <a id="btnChuDe" style="width: 250px; font-size: 11pt; color: aliceblue;  text-decoration: none" href="@Url.Action("SachTheoNXB", new {@MaNXB=item.MaNXB })" class="button button-adjacent"> @item.TenNXB</a>
+            <br />
+        }
+    </div>
+    @{
+        int i = 0;
+        <div style="float:left; width:62%; margin-top:-2%; margin-left:-2%">
+            @foreach (var item in Model)
+            {
+                i++;
+                <div id="SanPham" style="float:left; width:25%; margin-left:0%">
+                    <a href="@Url.Action("XemChiTiet", "Sach", new { @MaSach=item.MaSach })">  <div id="AnhBia"><img src="@Url.Content("~/HinhAnhSP/"+item.AnhBia)" width="100" height="150" /></div></a>
+                    <div id="ThongTin">
+                        @if (item.TenSach.Length < 30)
+                        {
+                            <div id="TenSach" title="@item.TenSach">@item.TenSach.</div>
+                        }
+                        else
+                        {
+                            <div id="TenSach" title="@item.TenSach"> @item.TenSach.Substring(0, 30) ...</div>
+                        }
+                        <br />
+                        <div id="DonGia" style="color:orange"><font color="Green">Giá:</font> @String.Format("{0:0,0}", item.GiaBan) VNĐ</div>
+                    </div>
+                </div>
+                if (i % 4 == 0)
+                {
+                    <div style="clear:both"></div>
+                }
+            }
+        </div>
+    }
+</div>
+<div style="clear:both"></div>
