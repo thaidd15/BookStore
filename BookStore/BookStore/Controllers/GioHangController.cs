@@ -56,7 +56,6 @@ namespace BookStore.Controllers
             if (sanpham != null)
             {
                 sanpham.iSoLuong = int.Parse(f["txtSoLuong"].ToString());
-
             }
             return RedirectToAction("GioHang");
         }

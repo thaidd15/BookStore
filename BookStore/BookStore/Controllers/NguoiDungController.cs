@@ -18,7 +18,6 @@ namespace BookStore.Controllers
         [HttpGet]
         public ActionResult DangKy()
         {
-
             return View();
         }
         [HttpPost]
@@ -34,7 +33,6 @@ namespace BookStore.Controllers
         [HttpGet]
         public ActionResult DangNhap()
         {
-
             return View();
         }
         [HttpPost]
